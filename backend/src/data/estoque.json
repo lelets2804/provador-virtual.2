@@ -142,5 +142,29 @@
     "cor": "off-white",
     "url_foto_da_peca": "/pecas/peca-feminina3.png",
     "justificativa": "O corpete estruturado com aplicações florais e a saia de tule criam um visual romântico e atemporal, perfeito para o grande dia."
+  },
+  {
+    "id": "V004",
+    "modelo_nome": "Vestido Longo Um Ombro Só Azul com Babado",
+    "categoria": "vestido",
+    "cor": "azul-claro",
+    "url_foto_da_peca": "/pecas/peca-feminina4.png",
+    "justificativa": "O babado delicado no ombro dá um toque romântico ao decote assimétrico, e o azul suave com a fenda lateral traz leveza e movimento para festas e casamentos."
+  },
+  {
+    "id": "V005",
+    "modelo_nome": "Vestido Longo Vinho com Fenda",
+    "categoria": "vestido",
+    "cor": "vinho",
+    "url_foto_da_peca": "/pecas/peca-feminina5.png",
+    "justificativa": "O vinho é sinônimo de sofisticação, e o decote coração com o drapeado na cintura valoriza a silhueta, num visual marcante para noites e cerimônias."
+  },
+  {
+    "id": "V006",
+    "modelo_nome": "Vestido Longo Azul Marinho com Mangas Bufantes",
+    "categoria": "vestido",
+    "cor": "azul-marinho",
+    "url_foto_da_peca": "/pecas/peca-feminina6.png",
+    "justificativa": "As mangas translúcidas e o decote quadrado dão um ar elegante e clássico, e o azul marinho profundo garante sofisticação em qualquer cerimônia."
   }
 ]
