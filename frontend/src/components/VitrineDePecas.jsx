@@ -21,6 +21,8 @@ function deduplicarPorModelo(estoque) {
   });
 }
 
+const GRADE = "grid grid-cols-4 xl:grid-cols-6 gap-4";
+
 export default function VitrineDePecas({ onSelecionarPeca }) {
   const [pecas, setPecas] = useState([]);
   const [carregando, setCarregando] = useState(true);
@@ -35,8 +37,8 @@ export default function VitrineDePecas({ onSelecionarPeca }) {
 
   if (carregando) {
     return (
-      <div className="grid grid-cols-2 gap-3">
-        {Array.from({ length: 4 }).map((_, i) => (
+      <div className={GRADE}>
+        {Array.from({ length: 12 }).map((_, i) => (
           <div key={i} className="aspect-[3/4] rounded-sm bg-navy-light animate-pulse" />
         ))}
       </div>
@@ -44,16 +46,16 @@ export default function VitrineDePecas({ onSelecionarPeca }) {
   }
 
   if (erro) {
-    return <p className="text-center text-thread font-sans text-sm py-10">{erro}</p>;
+    return <p className="text-center text-thread font-sans text-lg py-10">{erro}</p>;
   }
 
   return (
     <div className="flex flex-col gap-4">
-      <p className="font-display italic text-ivory text-center">
+      <p className="font-display italic text-ivory text-center text-xl">
         Toque na peça que quer experimentar
       </p>
 
-      <div className="grid grid-cols-2 gap-3">
+      <div className={GRADE}>
         {pecas.map((peca) => (
           <button
             key={peca.id}
@@ -71,17 +73,15 @@ export default function VitrineDePecas({ onSelecionarPeca }) {
             {/* véu escuro de baixo pra cima, pro texto ficar legível sobre a foto */}
             <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/25 to-transparent" />
 
-            <span className="absolute top-2 left-2 rounded-sm bg-charcoal/70 px-1.5 py-0.5 text-[9px] uppercase tracking-wide text-brass backdrop-blur-sm">
+            <span className="absolute top-2 left-2 rounded-sm bg-charcoal/70 px-1.5 py-0.5 text-[10px] uppercase tracking-wide text-brass backdrop-blur-sm">
               {peca.categoria}
             </span>
 
-            <div className="absolute inset-x-0 bottom-0 p-2.5 flex flex-col gap-0.5">
+            <div className="absolute inset-x-0 bottom-0 p-3 flex flex-col gap-0.5">
               <span className="text-sm font-display leading-tight text-ivory drop-shadow">
                 {peca.modelo_nome}
               </span>
-              <span className="text-[11px] text-ivory-dim">
-                {peca.cor}
-              </span>
+              <span className="text-xs text-ivory-dim">{peca.cor}</span>
             </div>
           </button>
         ))}

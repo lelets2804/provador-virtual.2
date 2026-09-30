@@ -62,5 +62,85 @@
     "cor": "azul-claro",
     "url_foto_da_peca": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?q=80&w=800&auto=format&fit=crop",
     "justificativa": "O azul claro suaviza o visual e ilumina o rosto, sendo uma alternativa refrescante ao branco tradicional."
+  },
+  {
+    "id": "T001",
+    "modelo_nome": "Terno Slim Cinza Claro",
+    "categoria": "terno",
+    "cor": "cinza-claro",
+    "url_foto_da_peca": "/pecas/peca-masculina1.png",
+    "justificativa": "O cinza claro traz leveza e modernidade ao terno, e o conjunto de três peças em tom sobre tom cria um visual coeso e sofisticado para dias e eventos diurnos."
+  },
+  {
+    "id": "T002",
+    "modelo_nome": "Terno Slim Azul Royal",
+    "categoria": "terno",
+    "cor": "azul-royal",
+    "url_foto_da_peca": "/pecas/peca-masculina2.png",
+    "justificativa": "O azul royal é para quem quer se destacar com elegância: a cor vibrante, combinada com a gravata no mesmo tom, dá presença e confiança ao look."
+  },
+  {
+    "id": "T003",
+    "modelo_nome": "Terno Linho Bege",
+    "categoria": "terno",
+    "cor": "bege",
+    "url_foto_da_peca": "/pecas/peca-masculina3.png",
+    "justificativa": "A textura do linho bege é leve e refinada, perfeita para climas quentes e cerimônias ao ar livre, e o colete completa o conjunto com um toque clássico."
+  },
+  {
+    "id": "T004",
+    "modelo_nome": "Terno Slim Creme com Gravata Terracota",
+    "categoria": "terno",
+    "cor": "creme",
+    "url_foto_da_peca": "/pecas/peca-masculina4.png",
+    "justificativa": "O creme neutro ganha personalidade com o toque terracota na gravata e no lenço, um contraste moderno que mostra estilo sem perder a elegância."
+  },
+  {
+    "id": "T005",
+    "modelo_nome": "Terno Linho Cinza com Gravata Verde Oliva",
+    "categoria": "terno",
+    "cor": "cinza",
+    "url_foto_da_peca": "/pecas/peca-masculina5.png",
+    "justificativa": "A textura do linho cinza dá leveza e personalidade ao terno, e a gravata verde oliva traz um contraste sofisticado, sem perder a sobriedade."
+  },
+  {
+    "id": "T006",
+    "modelo_nome": "Terno Preto com Gravata Verde Petróleo",
+    "categoria": "terno",
+    "cor": "preto",
+    "url_foto_da_peca": "/pecas/peca-masculina6.png",
+    "justificativa": "O preto é a base da elegância formal, e o toque de verde petróleo na gravata quebra a seriedade com um detalhe moderno e refinado."
+  },
+  {
+    "id": "T007",
+    "modelo_nome": "Terno Cinza Grafite",
+    "categoria": "terno",
+    "cor": "cinza-grafite",
+    "url_foto_da_peca": "/pecas/peca-masculina7.png",
+    "justificativa": "O cinza grafite é discreto e marcante ao mesmo tempo: um tom versátil que transmite seriedade e funciona bem em reuniões, eventos e cerimônias."
+  },
+  {
+    "id": "V001",
+    "modelo_nome": "Vestido Longo Verde Sálvia",
+    "categoria": "vestido",
+    "cor": "verde-salvia",
+    "url_foto_da_peca": "/pecas/peca-feminina1.png",
+    "justificativa": "O verde sálvia é suave e elegante, e o decote drapeado com a saia fluida valoriza a silhueta com leveza, ideal para casamentos e cerimônias."
+  },
+  {
+    "id": "V002",
+    "modelo_nome": "Vestido Longo Um Ombro Só Azul Acinzentado",
+    "categoria": "vestido",
+    "cor": "azul-acinzentado",
+    "url_foto_da_peca": "/pecas/peca-feminina2.png",
+    "justificativa": "O decote de um ombro só alonga o pescoço e a fenda lateral dá movimento ao caminhar, num tom azul acinzentado sofisticado e atual."
+  },
+  {
+    "id": "V003",
+    "modelo_nome": "Vestido de Noiva com Renda Floral",
+    "categoria": "vestido de noiva",
+    "cor": "off-white",
+    "url_foto_da_peca": "/pecas/peca-feminina3.png",
+    "justificativa": "O corpete estruturado com aplicações florais e a saia de tule criam um visual romântico e atemporal, perfeito para o grande dia."
   }
 ]

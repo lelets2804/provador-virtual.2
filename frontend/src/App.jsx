@@ -50,66 +50,67 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen textura-tecido flex items-center justify-center p-4">
-      <div className="w-full max-w-md bg-navy rounded-sm border border-brass-dim shadow-2xl overflow-hidden">
-        <header className="px-6 pt-6 pb-4 border-b border-brass-dim/40 flex items-center justify-between">
-          <div>
-            <h1 className="font-display text-2xl text-ivory leading-tight">Provador Virtual</h1>
-            <p className="text-xs text-ivory-dim font-sans">Alfaiataria assistida por IA</p>
-          </div>
-          <TrenaDeProgresso passoAtual={etapaAtual} />
-        </header>
+    <div className="h-screen w-screen textura-tecido flex flex-col overflow-hidden">
+      <header className="px-8 pt-3 pb-3 flex items-center justify-between border-b border-brass-dim/30">
+        <div className="flex flex-col">
+          <h1 className="font-display text-3xl text-ivory leading-none tracking-tight">
+            Provador <span className="italic text-brass">Virtual</span>
+          </h1>
+          <p className="mt-2 text-[11px] uppercase tracking-[0.3em] text-ivory-dim font-sans">
+            Alfaiataria assistida por IA
+          </p>
+        </div>
+        <TrenaDeProgresso passoAtual={etapaAtual} />
+      </header>
 
-        <main className="px-6 py-6">
-          {tela === "camera" && (
-            <div className="flex flex-col gap-5">
+      <main className="flex-1 min-h-0 px-8 pt-2 pb-3 overflow-y-auto">
+        {tela === "camera" && (
+          <div className="h-full flex flex-col gap-4">
+            <div className="flex-1 min-h-0">
               <CameraCapture onFotoCapturada={setFotoBase64} />
-              <button
-                type="button"
-                onClick={irParaVitrine}
-                disabled={!fotoBase64}
-                className="w-full py-3 rounded-sm bg-brass text-charcoal font-sans font-semibold tracking-wide disabled:opacity-40 hover:bg-ivory transition-colors"
-              >
-                Continuar
-              </button>
             </div>
-          )}
+            <button
+              type="button"
+              onClick={irParaVitrine}
+              disabled={!fotoBase64}
+              className="w-full max-w-xl mx-auto py-3 text-base rounded-sm bg-brass text-charcoal font-sans font-semibold tracking-wide disabled:opacity-40 hover:bg-ivory transition-colors"
+            >
+              Continuar
+            </button>
+          </div>
+        )}
 
-          {tela === "vitrine" && <VitrineDePecas onSelecionarPeca={lidarComSelecaoPeca} />}
-
-          {tela === "processando" && <TelaProcessando />}
-
-          {tela === "resultado" && resultado && (
-            <TelaResultado resultado={resultado} onReiniciar={reiniciar} />
-          )}
-
-          {tela === "erro" && (
-            <div className="flex flex-col gap-4 text-center py-8">
-              <p className="font-display text-lg text-thread">Não foi possível gerar o seu look</p>
-              <p className="text-sm text-ivory-dim font-sans">{erro}</p>
-              <button
-                onClick={reiniciar}
-                className="mx-auto px-5 py-2 rounded-sm border border-brass text-brass font-sans text-sm hover:bg-brass hover:text-charcoal transition-colors"
-              >
-                Tentar novamente
-              </button>
-            </div>
-          )}
-        </main>
-      </div>
+        {tela === "vitrine" && <VitrineDePecas onSelecionarPeca={lidarComSelecaoPeca} />}
+        {tela === "processando" && <TelaProcessando />}
+        {tela === "resultado" && resultado && (
+          <TelaResultado resultado={resultado} onReiniciar={reiniciar} />
+        )}
+        {tela === "erro" && (
+          <div className="flex flex-col gap-4 text-center py-8">
+            <p className="font-display text-lg text-thread">Não foi possível gerar o seu look</p>
+            <p className="text-sm text-ivory-dim font-sans">{erro}</p>
+            <button
+              onClick={reiniciar}
+              className="mx-auto px-5 py-2 rounded-sm border border-brass text-brass font-sans text-sm hover:bg-brass hover:text-charcoal transition-colors"
+            >
+              Tentar novamente
+            </button>
+          </div>
+        )}
+      </main>
     </div>
   );
 }
 
 function TrenaDeProgresso({ passoAtual }) {
   return (
-    <div className="flex flex-col items-end gap-1">
+    <div className="flex items-center gap-5">
       {ETAPAS.map((nome, i) => (
         <div key={nome} className="flex items-center gap-2">
-          <span className={`text-[10px] font-sans ${i === passoAtual ? "text-brass" : "text-ivory-dim/50"}`}>
+          <span className={`w-2 h-2 rounded-full ${i <= passoAtual ? "bg-brass" : "bg-brass-dim/30"}`} />
+          <span className={`text-xs font-sans ${i === passoAtual ? "text-brass" : "text-ivory-dim/50"}`}>
             {nome}
           </span>
-          <span className={`w-1.5 h-1.5 rounded-full ${i <= passoAtual ? "bg-brass" : "bg-brass-dim/30"}`} />
         </div>
       ))}
     </div>

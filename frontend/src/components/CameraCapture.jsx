@@ -44,63 +44,78 @@ export default function CameraCapture({ onFotoCapturada }) {
   const refazer = () => {
     setFotoPreview(null);
     setCameraPronta(false);
+    setErro(null);
     setChaveStream(Date.now());
     onFotoCapturada(null);
   };
 
   return (
-    <div className="flex flex-col items-center gap-3">
-      <p className="text-xs font-sans text-ivory-dim text-center max-w-[280px]">
-        Fique de frente para a câmara, enquadrando da cintura para cima
-      </p>
+    <div className="h-full flex flex-col items-center gap-2">
+      {/* a moldura ocupa toda a altura disponível */}
+      <div className="flex-1 min-h-0 w-full flex justify-center">
+        <div className="relative h-full max-w-full aspect-[4/3] overflow-hidden rounded-sm bg-navy ring-1 ring-brass-dim/60 shadow-2xl shadow-black/50">
+          {fotoPreview ? (
+            <img src={fotoPreview} alt="Foto capturada" className="w-full h-full object-cover" />
+          ) : (
+            <img
+              key={chaveStream}
+              src={`${URL_STREAM}?_=${chaveStream}`}
+              alt="Câmara ao vivo"
+              onLoad={() => setCameraPronta(true)}
+              onError={() => setErro("Sem sinal da ESP32-CAM. Confira se ela está ligada e na mesma rede.")}
+              className="w-full h-full object-cover"
+            />
+          )}
 
-      <div className="relative w-full max-w-[280px] aspect-[4/5] overflow-hidden rounded-sm border border-brass-dim">
-        {/* cantos de latão, como acabamento de moldura de espelho */}
-        <span className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-brass z-10" />
-        <span className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-brass z-10" />
-        <span className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-brass z-10" />
-        <span className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-brass z-10" />
+          {!cameraPronta && !fotoPreview && !erro && (
+            <div className="absolute inset-0 flex items-center justify-center text-ivory-dim text-lg font-sans">
+              A ligar a câmara…
+            </div>
+          )}
 
-        {fotoPreview ? (
-          <img src={fotoPreview} alt="Foto capturada" className="w-full h-full object-cover" />
-        ) : (
-          <img
-            key={chaveStream}
-            src={`${URL_STREAM}?_=${chaveStream}`}
-            alt="Câmara ao vivo"
-            onLoad={() => setCameraPronta(true)}
-            onError={() => setErro("Sem sinal da ESP32-CAM. Confira se ela está ligada e na mesma rede.")}
-            className="w-full h-full object-cover"
-          />
-        )}
+          {/* cantos finos, só para marcar o enquadramento */}
+          <span className="absolute top-4 left-4 w-6 h-6 border-t border-l border-ivory/60 z-10" />
+          <span className="absolute top-4 right-4 w-6 h-6 border-t border-r border-ivory/60 z-10" />
+          <span className="absolute bottom-4 left-4 w-6 h-6 border-b border-l border-ivory/60 z-10" />
+          <span className="absolute bottom-4 right-4 w-6 h-6 border-b border-r border-ivory/60 z-10" />
 
-        {!cameraPronta && !fotoPreview && !erro && (
-          <div className="absolute inset-0 flex items-center justify-center bg-navy text-ivory-dim text-sm font-sans">
-            A ligar a câmara…
+          {/* faixa na base da imagem: orientação + botão */}
+          <div className="absolute inset-x-0 bottom-0 pt-20 pb-6 flex flex-col items-center gap-3 bg-gradient-to-t from-charcoal/80 to-transparent z-20">
+            {fotoPreview ? (
+              <button
+                type="button"
+                onClick={refazer}
+                className="px-8 py-2.5 rounded-sm bg-charcoal/70 backdrop-blur-sm border border-brass-dim text-ivory font-sans text-base hover:border-brass transition-colors"
+              >
+                Tirar outra foto
+              </button>
+            ) : (
+              <>
+                {cameraPronta && (
+                  <p className="text-sm font-sans text-ivory">
+                    Fique de frente, enquadrando da cintura para cima
+                  </p>
+                )}
+                <button
+                  type="button"
+                  onClick={capturar}
+                  disabled={capturando}
+                  aria-label="Capturar foto"
+                  className="group w-[72px] h-[72px] rounded-full border-2 border-brass p-1.5 disabled:opacity-40 transition-opacity"
+                >
+                  <span
+                    className={`block w-full h-full rounded-full bg-brass group-hover:bg-ivory transition-all ${
+                      capturando ? "scale-75" : ""
+                    }`}
+                  />
+                </button>
+              </>
+            )}
           </div>
-        )}
+        </div>
       </div>
 
-      {erro && <p className="text-xs font-sans text-thread text-center max-w-[280px]">{erro}</p>}
-
-      {fotoPreview ? (
-        <button
-          type="button"
-          onClick={refazer}
-          className="text-sm font-sans text-ivory-dim underline decoration-brass-dim underline-offset-4 hover:text-ivory transition-colors"
-        >
-          Tirar outra foto
-        </button>
-      ) : (
-        <button
-          type="button"
-          onClick={capturar}
-          disabled={capturando}
-          className="px-5 py-2 rounded-sm bg-brass text-charcoal font-sans font-semibold text-sm tracking-wide disabled:opacity-40 hover:bg-ivory transition-colors"
-        >
-          {capturando ? "A capturar…" : "Capturar foto"}
-        </button>
-      )}
+      {erro && <p className="text-sm font-sans text-thread text-center">{erro}</p>}
     </div>
   );
 }
