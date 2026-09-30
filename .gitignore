@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.env
+*.log
+.DS_Store
+
+# credenciais do Wi-Fi da ESP32-CAM
+firmware/esp32-cam/secrets.h
